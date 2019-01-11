@@ -30,7 +30,6 @@ class ResultColumn {
   }
 
   String peek(int row) {
-    print(row);
     return value.peek(row, 0);
   }
 }
