@@ -43,9 +43,9 @@ void main() {
     stmt.execute();
     var res = stmt.resultSet;
     stmt.fetch();
-    print(res.values());
+    expect(res.values(), equals(['99', "banana"]));
     stmt.fetch();
-    print(res.values());
+    expect(res.values(), equals(['100', "orange"]));
     stmt.free();
     conn.disconnect();
   });
