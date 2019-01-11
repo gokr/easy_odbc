@@ -1,0 +1,14 @@
+name: easy_odbc
+version: 0.0.1
+author: Göran Krampe
+description: High level ODBC wrapper.
+
+environment:
+  sdk: ">=2.1.0"
+
+dependencies:
+  odbc:
+    git: git://github.com/gokr/dart-odbc.git
+
+dev_dependencies:
+  test: ^1.3.4
