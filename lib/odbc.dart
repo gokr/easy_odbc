@@ -87,7 +87,7 @@ class OdbcSQLStatement {
   int execute() {
     resultSet.bind(this);
     var res = sqlExecute(handle);
-    if (res != 0) {
+    if (res != SQL_SUCCESS && res != SQL_SUCCESS_WITH_INFO) {
       throw "Failed to execute SQL: $sql";
     }
     return res;
@@ -139,7 +139,7 @@ class OdbcConnection {
     // Connect.
     var res =
         sqlConnect(hConn, dsn, SQL_NTS, username, SQL_NTS, password, SQL_NTS);
-    if (res != 0) {
+    if (res != SQL_SUCCESS && res != SQL_SUCCESS_WITH_INFO) {
       throw "Failed to connect to DSN: $dsn username: $username password: $password";
     }
     return hConn;
@@ -167,7 +167,7 @@ class OdbcConnection {
   /// Disconnect
   disconnect() {
     var res = sqlDisconnect(conn);
-    if (res != 0) {
+    if (res != SQL_SUCCESS && res != SQL_SUCCESS_WITH_INFO) {
       throw "Failed to disconnect";
     }
     sqlFreeHandle(SQL_HANDLE_DBC, conn);
